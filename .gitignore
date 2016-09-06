@@ -1,10 +1,6 @@
 *.rbc
 capybara-*.html
 .rspec
-/log
-/tmp
-/db/*.sqlite3
-/db/*.sqlite3-journal
 /public/system
 /coverage/
 /spec/tmp
@@ -37,6 +33,12 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
 
 # Ignore Byebug command history file.
 .byebug_history
