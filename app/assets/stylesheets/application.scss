@@ -1,5 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "devise";
+
+.navbar {
+  border-radius: 0;
+}
 
 #login-dp {
   min-width: 250px;
@@ -53,11 +58,12 @@
 
 @media(max-width:768px) {
   #login-dp{
-      background-color: inherit;
-      color: #fff;
+    background-color: inherit;
+    color: #fff;
   }
+
   #login-dp .bottom{
-      background-color: inherit;
-      border-top:0 none;
+    background-color: inherit;
+    border-top:0 none;
   }
 }
