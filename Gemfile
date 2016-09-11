@@ -15,6 +15,8 @@ gem 'devise'
 gem "devise-encryptable"
 gem 'devise-scrypt'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'cancancan'
+gem 'rolify'
 
 group :development, :test do
   gem 'byebug', platform: :mri
