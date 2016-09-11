@@ -9,7 +9,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
-gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem "devise-encryptable"
@@ -19,6 +18,8 @@ gem 'cancancan'
 gem 'rolify'
 
 group :development, :test do
+  gem 'shoulda'
+  gem "factory_girl_rails", '~> 4.0'
   gem 'byebug', platform: :mri
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.5'
