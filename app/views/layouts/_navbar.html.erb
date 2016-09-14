@@ -4,10 +4,21 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="navbar-collapse"> <!-- Add collapse in class -->
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Catálogo de Serviços', services_url %></li>
         <% if user_signed_in? %>
-          <p class="navbar-text">Bem vindo <%= current_user.email %>!</p>
-          <li><%= link_to 'Sair', destroy_user_session_url, method: :delete %></li>
-        <% else %>
+          <p class="navbar-text">Bem vindo <%= current_user.name %>!</p>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Minha Conta</b>
+              <span class="caret"></span>
+            </a>
+            <ul id="login-dp" class="dropdown-menu">
+              <div class="bottom text-right">
+                <li><%= link_to 'Sair', destroy_user_session_url, method: :delete %></li>
+                <li><%= link_to 'Gerenciar Serviços', destroy_user_session_url %></li>
+              </div>
+            </ul>
+          </li>
+          <% else %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Entrar</b>
               <span class="caret"></span>
