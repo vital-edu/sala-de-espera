@@ -16,6 +16,7 @@ gem 'devise-scrypt'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'cancancan'
 gem 'rolify'
+gem "paperclip", "~> 5.0.0"
 
 group :development, :test do
   gem 'shoulda'
