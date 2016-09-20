@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'static_pages#home'
 
   resources :services
+  resources :service_categories
 
   get 'services/manage'
 end
