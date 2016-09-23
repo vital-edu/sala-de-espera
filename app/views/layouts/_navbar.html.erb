@@ -4,21 +4,28 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="navbar-collapse"> <!-- Add collapse in class -->
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Catálogo de Serviços', services_url %></li>
         <% if user_signed_in? %>
           <p class="navbar-text">Bem vindo <%= current_user.name %>!</p>
+          <li class="dropdown">
+            <% if current_user.has_role? :employee %>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Gerenciar</b>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Categorias de Serviços', service_categories_url %></li>
+              </ul>
+            <% end %>
+          </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Minha Conta</b>
               <span class="caret"></span>
             </a>
             <ul id="login-dp" class="dropdown-menu">
-              <div class="bottom text-right">
-                <li><%= link_to 'Sair', destroy_user_session_url, method: :delete %></li>
-                <li><%= link_to 'Gerenciar Serviços', destroy_user_session_url %></li>
-              </div>
+              <li><%= link_to 'Sair', destroy_user_session_url, method: :delete %></li>
+              <li><%= link_to 'Gerenciar Serviços', services_manage_url %></li>
             </ul>
           </li>
-          <% else %>
+        <% else %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Entrar</b>
               <span class="caret"></span>

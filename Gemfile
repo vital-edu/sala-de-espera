@@ -17,6 +17,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'cancancan'
 gem 'rolify'
 gem "paperclip", "~> 5.0.0"
+gem 'paperclip-i18n'
 gem 'simple_form'
 gem 'devise-i18n'
 gem 'rails-i18n', '~> 5.0.0'
