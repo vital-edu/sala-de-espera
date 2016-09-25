@@ -1,0 +1,12 @@
+<%= simple_form_for(@service) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  </div>
+
+  <div class="form-actions">
+    <%= f.input :scheduled_time %>
+    <%= f.association :service_category %>
+    <%= f.button :submit %>
+  </div>
+<% end %>

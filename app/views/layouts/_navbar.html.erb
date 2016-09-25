@@ -13,6 +13,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to 'Categorias de Serviços', service_categories_url if current_user.has_role? :manager  %></li>
+                <li><%= link_to 'Serviços Prestados', services_url if current_user.has_role? :employee  %></li>
               </ul>
             <% end %>
           </li>

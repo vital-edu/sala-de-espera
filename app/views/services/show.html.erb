@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Categoria de Serviço:</strong>
+  <%= @service.service_category.name %>
+</p>
+
+<p>
+  <strong>Hora Marcada:</strong>
+  <%= @service.scheduled_time %>
+</p>
+
+<%= link_to 'Edit', edit_service_path(@service) %> |
+<%= link_to 'Back', services_path %>
