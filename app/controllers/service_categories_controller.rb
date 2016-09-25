@@ -1,5 +1,6 @@
 class ServiceCategoriesController < ApplicationController
   before_action :set_service_category, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
     @service_categories = ServiceCategory.all
