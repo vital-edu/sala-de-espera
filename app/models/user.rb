@@ -2,20 +2,33 @@ class User < ApplicationRecord
   has_many :offered_services, class_name: :services
   has_many :purchased_services, class_name: :services
 
-  before_create :set_default_role
+  before_create :set_client_role, on: nil
+  before_create :set_employee_role, on: :empĺoyee
 
   rolify
   devise :database_authenticatable, :registerable, :timeoutable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
-         :lockable, :encryptable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable, :lockable, :encryptable
 
   validates_presence_of :name, :rg, :cpf
   validates_length_of :name, in: 1..100
   validates_confirmation_of :password
 
+  rails_admin do
+    configure :offered_services do
+    end
+
+    configure :purchased_services do
+    end
+  end
+
   private
 
-  def set_default_role
-    self.add_role(:client) if self.roles.blank?
+  def set_client_role
+    self.add_role :client
+  end
+
+  def set_employee_role
+    self.add_role :employee
   end
 end

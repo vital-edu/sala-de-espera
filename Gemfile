@@ -23,6 +23,7 @@ gem 'devise-i18n'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'rails_admin', '~> 1.0'
 
 group :development, :test do
   gem 'shoulda'
