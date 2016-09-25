@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  has_many :services
+  has_many :offered_services, class_name: :services
+  has_many :purchased_services, class_name: :services
+
   before_create :set_default_role
 
   rolify

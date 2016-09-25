@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920150051) do
+ActiveRecord::Schema.define(version: 20160925000127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,14 +38,16 @@ ActiveRecord::Schema.define(version: 20160920150051) do
   end
 
   create_table "services", force: :cascade do |t|
-    t.datetime "schedule"
+    t.datetime "scheduled_time"
     t.integer  "status"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.integer  "user_id"
+    t.integer  "employee_id"
     t.integer  "service_category_id"
+    t.integer  "client_id"
+    t.index ["client_id"], name: "index_services_on_client_id", using: :btree
+    t.index ["employee_id"], name: "index_services_on_employee_id", using: :btree
     t.index ["service_category_id"], name: "index_services_on_service_category_id", using: :btree
-    t.index ["user_id"], name: "index_services_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
