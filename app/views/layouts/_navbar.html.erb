@@ -12,6 +12,7 @@
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
+                <li><%= link_to 'Funcionários', employees_url if current_user.has_role? :manager  %></li>
                 <li><%= link_to 'Categorias de Serviços', service_categories_url if current_user.has_role? :manager  %></li>
                 <li><%= link_to 'Serviços Prestados', services_url if current_user.has_role? :employee  %></li>
               </ul>
@@ -23,7 +24,6 @@
             </a>
             <ul id="login-dp" class="dropdown-menu">
               <li><%= link_to 'Sair', destroy_user_session_url, method: :delete %></li>
-              <li><%= link_to 'Gerenciar Serviços', services_manage_url %></li>
             </ul>
           </li>
         <% else %>
