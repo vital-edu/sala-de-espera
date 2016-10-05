@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :offered_services, class_name: :services
-  has_many :purchased_services, class_name: :services
+  has_many :offered_services, class_name: 'Service'
+  has_many :purchased_services, class_name: 'Service'
 
   before_create :set_client_role, on: nil
   before_create :set_employee_role, on: :empĺoyee
@@ -16,9 +16,11 @@ class User < ApplicationRecord
 
   rails_admin do
     configure :offered_services do
+      label 'Serviço oferecido'
     end
 
     configure :purchased_services do
+      label 'Serviço comprado'
     end
   end
 
