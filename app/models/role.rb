@@ -10,4 +10,6 @@ class Role < ApplicationRecord
             :allow_nil => true
 
   scopify
+
+  validates_inclusion_of :name, in: %w{client manager employee}, message: "%{value} is not a permitted role"
 end
