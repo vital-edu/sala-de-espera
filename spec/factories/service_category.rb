@@ -3,6 +3,6 @@ FactoryGirl.define do
     name "Corte de Cabelo"
     description "Corte de cabelo masculino ou feminino"
     price "10.00"
-    image { File.new("#{Rails.root}/spec/support/images/test.png") }
+    image { Rack::Test::UploadedFile.new('spec/support/images/test.png', 'image/png') }
   end
 end
