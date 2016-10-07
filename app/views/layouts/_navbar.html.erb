@@ -2,6 +2,11 @@
 <nav class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
     <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <%= image_tag "logo.svg" %>
+      </a>
+    </div>
     <div class="navbar-collapse"> <!-- Add collapse in class -->
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
