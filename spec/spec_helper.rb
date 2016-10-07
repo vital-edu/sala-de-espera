@@ -19,4 +19,7 @@ RSpec.configure do |config|
 
   config.order = :random
   Kernel.srand config.seed
+  config.after(:suite) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+  end
 end
