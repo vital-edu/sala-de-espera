@@ -35,6 +35,11 @@ div {
   color: #000
 }
 
+.carousel-inner > .item > img {
+  margin: auto;
+  height: 315px;
+}
+
 #login-dp {
   min-width: 250px;
   padding: 14px 14px 0;
