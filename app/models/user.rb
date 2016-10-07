@@ -2,8 +2,7 @@ class User < ApplicationRecord
   has_many :offered_services, class_name: 'Service'
   has_many :purchased_services, class_name: 'Service'
 
-  before_create :set_client_role, on: nil
-  before_create :set_employee_role, on: :empĺoyee
+  before_create :set_client_role
 
   rolify
   devise :database_authenticatable, :registerable, :timeoutable,
@@ -27,10 +26,6 @@ class User < ApplicationRecord
   private
 
   def set_client_role
-    self.add_role :client
-  end
-
-  def set_employee_role
-    self.add_role :employee
+    self.add_role :client unless self.has_role? :employee
   end
 end

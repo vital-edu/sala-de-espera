@@ -4,6 +4,8 @@ class Service < ApplicationRecord
   belongs_to :employee, class_name: 'User', foreign_key: 'employee_id'
   belongs_to :client, class_name: 'User', foreign_key: 'client_id'
 
+  enum status: [ :avaiable, :unavaible, :bought, :checked_in, :done ]
+
   validates_presence_of :scheduled_time, :status, :employee, :service_category, allow_blank: false
   validate :scheduled_time_cannot_be_in_the_past
 

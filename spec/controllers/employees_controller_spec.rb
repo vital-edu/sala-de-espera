@@ -5,6 +5,7 @@ RSpec.describe EmployeesController, type: :controller do
   describe "GET #index" do
     it "assigns all employees as @employees" do
       employee = create(:employee)
+      employee.add_role :employee
       get :index
       expect(assigns(:employees)).to eq([employee])
     end
@@ -13,6 +14,7 @@ RSpec.describe EmployeesController, type: :controller do
   describe "GET #show" do
     it "assigns the requested employee as @employee" do
       employee = create(:employee)
+      employee.add_role :employee
       get :show, params: {id: employee.to_param}
       expect(assigns(:employee)).to eq(employee)
     end
@@ -28,6 +30,7 @@ RSpec.describe EmployeesController, type: :controller do
   describe "GET #edit" do
     it "assigns the requested employee as @employee" do
       employee = create(:employee)
+      employee.add_role :employee
       get :edit, params: {id: employee.id}
       expect(assigns(:employee)).to eq(employee)
     end
@@ -76,6 +79,7 @@ RSpec.describe EmployeesController, type: :controller do
 
       it "updates the requested employee" do
         employee = create(:employee)
+        employee.add_role :employee
         new_attributes = attributes_for(:employee)
         new_attributes[:name] = "Oshua"
         put :update, params: {id: employee.id, user: new_attributes}
@@ -84,12 +88,14 @@ RSpec.describe EmployeesController, type: :controller do
 
       it "assigns the requested employee as @employee" do
         employee = create(:employee)
+        employee.add_role :employee
         put :update, params: {id: employee.id, user: attributes_for(:employee)}
         expect(assigns(:employee)).to eq(employee)
       end
 
       it "redirects to the employee index" do
         employee = create(:employee)
+        employee.add_role :employee
         put :update, params: {id: employee.id, user: attributes_for(:employee)}
         expect(response).to redirect_to(employees_url)
       end
@@ -103,12 +109,14 @@ RSpec.describe EmployeesController, type: :controller do
 
       it "assigns the employee as @employee" do
         employee = create(:employee)
+        employee.add_role :employee
         put :update, params: {id: employee.id, user: @invalid_attributes}
         expect(assigns(:employee)).to eq(employee)
       end
 
       it "re-renders the 'edit' template" do
         employee = create(:employee)
+        employee.add_role :employee
         put :update, params: {id: employee.id, user: @invalid_attributes}
         expect(response).to render_template("edit")
       end
@@ -118,6 +126,7 @@ RSpec.describe EmployeesController, type: :controller do
   describe "DELETE #destroy" do
     it "destroys the requested employee" do
       employee = create(:employee)
+      employee.add_role :employee
       expect {
         delete :destroy, params: {id: employee.id}
       }.to change(User, :count).by(-1)
@@ -125,6 +134,7 @@ RSpec.describe EmployeesController, type: :controller do
 
     it "redirects to the employees list" do
       employee = create(:employee)
+      employee.add_role :employee
       delete :destroy, params: {id: employee.id}
       expect(response).to redirect_to(employees_url)
     end

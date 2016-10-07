@@ -11,6 +11,7 @@ RSpec.describe Service, type: :model do
       it { expect(@service).to validate_presence_of(:status) }
       it { expect(@service).to validate_presence_of(:employee) }
       it { expect(@service).to validate_presence_of(:service_category) }
+      it { expect(@service).to validate_presence_of(:status) }
     end
   end
 
