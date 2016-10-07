@@ -8,6 +8,8 @@
 $(document).ready(function() {
 
     $('#calendar').fullCalendar({
+      events: '/services.json',
+      defaultView: 'agendaDay',
     })
 
 });
