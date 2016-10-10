@@ -15,9 +15,16 @@
   color: #fff;
 }
 
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  color: #000;
+  background-color: transparent;
+}
+
 .navbar-inverse .navbar-text {
   color: #fff;
 }
+
 
 .navbar {
   border-radius: 0;
@@ -32,12 +39,16 @@
   height: 100%;
 }
 
+.navbar-text {
+  margin-left: 15px;
+}
+
 .alert {
   margin-bottom: 0px;
 }
 
 .dropdown:hover {
-  background-color: #000;
+  //background-color: #000;
 }
 
 div {
@@ -51,9 +62,9 @@ div {
 
 #login-dp {
   min-width: 250px;
-  padding: 14px 14px 0;
+  padding: 14px;
   overflow:hidden;
-  background-color:rgba(255,255,255,.8);
+  background-color: rgba(255,255,255,.8);;
 }
 
 #login-dp .help-block {
@@ -61,7 +72,7 @@ div {
 }
 
 #login-dp .bottom {
-  background-color:rgba(255,255,255,.8);
+  background-color: rgba(255,255,255,.8);
   border-top:1px solid #ddd;
   clear:both;
   padding:14px;
@@ -79,24 +90,33 @@ div {
   margin-bottom: 10px;
 }
 
+#login-dp.dropdown-menu {
+  background-color: #fff;
+  border-radius: 0px;
+}
+
+#login-dp.dropdown-menu > li > a:hover {
+  //color: #000;
+}
+
 .btn-fb {
   color: #fff;
-  background-color:#3b5998;
+  background-color: transparent;
 }
 
 .btn-fb:hover {
   color: #fff;
-  background-color:#496ebc
+  background-color: #496ebc
 }
 
 .btn-tw {
   color: #fff;
-  background-color:#55acee;
+  background-color: #55acee;
 }
 
 .btn-tw:hover {
   color: #fff;
-  background-color:#59b5fa;
+  background-color: #59b5fa;
 }
 
 @media(max-width:768px) {
