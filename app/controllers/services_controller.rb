@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: %i(show edit update destroy)
   load_and_authorize_resource
 
   def index
@@ -41,18 +41,19 @@ class ServicesController < ApplicationController
   end
 
   def destroy
-    @service.destroy
+    @service.destroy!
     respond_to do |format|
       format.html { redirect_to services_url, notice: 'Serviço destruído com sucesso.' }
     end
   end
 
   private
-    def set_service
-      @service = Service.find(params[:id])
-    end
 
-    def service_params
-      params.require(:service).permit(:scheduled_time, :employee_id, :client_id, :service_category_id)
-    end
+  def set_service
+    @service = Service.find(params[:id])
+  end
+
+  def service_params
+    params.require(:service).permit(:scheduled_time, :employee_id, :client_id, :service_category_id)
+  end
 end

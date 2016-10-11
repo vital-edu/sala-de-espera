@@ -52,7 +52,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  config.pepper = ENV["SECRET_KEY_BASE"]
+  config.pepper = ENV['SECRET_KEY_BASE']
 
   # Send a notification email when the user's password is changed
   config.send_password_change_notification = false
@@ -85,7 +85,7 @@ Devise.setup do |config|
 
   # Options to be passed to the created cookie. For instance, you can set
   # secure: true in order to force SSL only cookies.
-  config.rememberable_options = {secure: true}
+  config.rememberable_options = { secure: true }
 
   # ==> Configuration for :validatable
   # Range for password length.
@@ -102,7 +102,7 @@ Devise.setup do |config|
   config.unlock_keys = [:email]
   config.unlock_strategy = :both
   config.maximum_attempts = 10
-  config.unlock_in = 2.hour
+  config.unlock_in = 2.hours
   config.last_attempt_warning = true
 
   # ==> Configuration for :recoverable

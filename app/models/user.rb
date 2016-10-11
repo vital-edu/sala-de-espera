@@ -9,9 +9,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :encryptable
 
-  validates_presence_of :name, :rg, :cpf
-  validates_length_of :name, in: 1..100
-  validates_confirmation_of :password
+  validates :name, :rg, :cpf, presence: true
+  validates :name, length: { in: 1..100 }
+  validates :password, confirmation: true
 
   rails_admin do
     configure :offered_services do
@@ -26,6 +26,6 @@ class User < ApplicationRecord
   private
 
   def set_client_role
-    self.add_role :client unless self.has_role? :employee
+    add_role :client unless has_role? :employee
   end
 end

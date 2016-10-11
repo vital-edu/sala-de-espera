@@ -1,5 +1,5 @@
 class ServiceCategoriesController < ApplicationController
-  before_action :set_service_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_service_category, only: %i(show edit update destroy)
   load_and_authorize_resource
 
   def index
@@ -39,18 +39,19 @@ class ServiceCategoriesController < ApplicationController
   end
 
   def destroy
-    @service_category.destroy
+    @service_category.destroy!
     respond_to do |format|
       format.html { redirect_to service_categories_url, notice: 'Categoria de serviço destruída com sucesso.' }
     end
   end
 
   private
-    def set_service_category
-      @service_category = ServiceCategory.find(params[:id])
-    end
 
-    def service_category_params
-      params.require(:service_category).permit( :name, :description, :price, :image )
-    end
+  def set_service_category
+    @service_category = ServiceCategory.find(params[:id])
+  end
+
+  def service_category_params
+    params.require(:service_category).permit(:name, :description, :price, :image)
+  end
 end

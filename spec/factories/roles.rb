@@ -1,13 +1,13 @@
 FactoryGirl.define do
   factory :employee_role, class: Role do
-    name "employee"
+    name 'employee'
   end
 
   factory :manager_role, class: Role do
-    name "manager"
+    name 'manager'
   end
 
   factory :client_role, class: Role do
-    name "client"
+    name 'client'
   end
 end

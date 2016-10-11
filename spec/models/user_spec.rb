@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   describe 'user validation' do
     context 'presence' do
       it { should validate_presence_of(:email) }

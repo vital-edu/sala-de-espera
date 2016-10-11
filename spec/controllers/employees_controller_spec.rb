@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe EmployeesController, type: :controller do
-
-  describe "GET #index" do
-    it "assigns all employees as @employees" do
+  describe 'GET #index' do
+    it 'assigns all employees as @employees' do
       employee = create(:employee)
       employee.add_role :employee
       get :index
@@ -11,131 +10,130 @@ RSpec.describe EmployeesController, type: :controller do
     end
   end
 
-  describe "GET #show" do
-    it "assigns the requested employee as @employee" do
+  describe 'GET #show' do
+    it 'assigns the requested employee as @employee' do
       employee = create(:employee)
       employee.add_role :employee
-      get :show, params: {id: employee.to_param}
+      get :show, params: { id: employee.to_param }
       expect(assigns(:employee)).to eq(employee)
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new employee as @employee" do
+  describe 'GET #new' do
+    it 'assigns a new employee as @employee' do
       get :new, params: {}
-        expect(assigns(:employee)).to be_a_new(User)
+      expect(assigns(:employee)).to be_a_new(User)
     end
   end
 
-  describe "GET #edit" do
-    it "assigns the requested employee as @employee" do
+  describe 'GET #edit' do
+    it 'assigns the requested employee as @employee' do
       employee = create(:employee)
       employee.add_role :employee
-      get :edit, params: {id: employee.id}
+      get :edit, params: { id: employee.id }
       expect(assigns(:employee)).to eq(employee)
     end
   end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Employee" do
-        expect {
-          post :create, params: {user: attributes_for(:employee)}
-        }.to change(User, :count).by(1)
+  describe 'POST #create' do
+    context 'with valid params' do
+      it 'creates a new Employee' do
+        expect do
+          post :create, params: { user: attributes_for(:employee) }
+        end.to change(User, :count).by(1)
       end
 
-      it "assigns a newly created employee as @employee" do
-        post :create, params: {user: attributes_for(:employee)}
+      it 'assigns a newly created employee as @employee' do
+        post :create, params: { user: attributes_for(:employee) }
         expect(assigns(:employee)).to be_a(User)
         expect(assigns(:employee)).to be_persisted
       end
 
-      it "redirects to the employee index" do
-        post :create, params: {user: attributes_for(:employee)}
+      it 'redirects to the employee index' do
+        post :create, params: { user: attributes_for(:employee) }
         expect(response).to redirect_to(employees_url)
       end
     end
 
-    context "with invalid params" do
+    context 'with invalid params' do
       before(:each) do
         @invalid_attributes = attributes_for(:employee)
-        @invalid_attributes[:name] = ""
+        @invalid_attributes[:name] = ''
       end
 
-      it "assigns a newly created but unsaved employee as @employee" do
-        post :create, params: {user: @invalid_attributes}
+      it 'assigns a newly created but unsaved employee as @employee' do
+        post :create, params: { user: @invalid_attributes }
         expect(assigns(:employee)).to be_a_new(User)
       end
 
       it "re-renders the 'new' template" do
-        post :create, params: {user: @invalid_attributes}
-        expect(response).to render_template("new")
+        post :create, params: { user: @invalid_attributes }
+        expect(response).to render_template('new')
       end
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-
-      it "updates the requested employee" do
+  describe 'PUT #update' do
+    context 'with valid params' do
+      it 'updates the requested employee' do
         employee = create(:employee)
         employee.add_role :employee
         new_attributes = attributes_for(:employee)
-        new_attributes[:name] = "Oshua"
-        put :update, params: {id: employee.id, user: new_attributes}
+        new_attributes[:name] = 'Oshua'
+        put :update, params: { id: employee.id, user: new_attributes }
         expect(User.find(employee.id).email).to eq(new_attributes[:email])
       end
 
-      it "assigns the requested employee as @employee" do
+      it 'assigns the requested employee as @employee' do
         employee = create(:employee)
         employee.add_role :employee
-        put :update, params: {id: employee.id, user: attributes_for(:employee)}
+        put :update, params: { id: employee.id, user: attributes_for(:employee) }
         expect(assigns(:employee)).to eq(employee)
       end
 
-      it "redirects to the employee index" do
+      it 'redirects to the employee index' do
         employee = create(:employee)
         employee.add_role :employee
-        put :update, params: {id: employee.id, user: attributes_for(:employee)}
+        put :update, params: { id: employee.id, user: attributes_for(:employee) }
         expect(response).to redirect_to(employees_url)
       end
     end
 
-    context "with invalid params" do
+    context 'with invalid params' do
       before(:each) do
         @invalid_attributes = attributes_for(:employee)
-        @invalid_attributes[:name] = ""
+        @invalid_attributes[:name] = ''
       end
 
-      it "assigns the employee as @employee" do
+      it 'assigns the employee as @employee' do
         employee = create(:employee)
         employee.add_role :employee
-        put :update, params: {id: employee.id, user: @invalid_attributes}
+        put :update, params: { id: employee.id, user: @invalid_attributes }
         expect(assigns(:employee)).to eq(employee)
       end
 
       it "re-renders the 'edit' template" do
         employee = create(:employee)
         employee.add_role :employee
-        put :update, params: {id: employee.id, user: @invalid_attributes}
-        expect(response).to render_template("edit")
+        put :update, params: { id: employee.id, user: @invalid_attributes }
+        expect(response).to render_template('edit')
       end
     end
   end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested employee" do
+  describe 'DELETE #destroy' do
+    it 'destroys the requested employee' do
       employee = create(:employee)
       employee.add_role :employee
-      expect {
-        delete :destroy, params: {id: employee.id}
-      }.to change(User, :count).by(-1)
+      expect do
+        delete :destroy, params: { id: employee.id }
+      end.to change(User, :count).by(-1)
     end
 
-    it "redirects to the employees list" do
+    it 'redirects to the employees list' do
       employee = create(:employee)
       employee.add_role :employee
-      delete :destroy, params: {id: employee.id}
+      delete :destroy, params: { id: employee.id }
       expect(response).to redirect_to(employees_url)
     end
   end

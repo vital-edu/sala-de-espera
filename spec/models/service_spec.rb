@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Service, type: :model do
-
   describe 'service validation' do
     context 'presence' do
       before(:each) do
@@ -14,5 +13,4 @@ RSpec.describe Service, type: :model do
       it { expect(@service).to validate_presence_of(:status) }
     end
   end
-
 end

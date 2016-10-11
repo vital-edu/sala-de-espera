@@ -11,12 +11,12 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
-gem "devise-encryptable"
+gem 'devise-encryptable'
 gem 'devise-scrypt'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'cancancan'
 gem 'rolify'
-gem "paperclip", "~> 5.0.0"
+gem 'paperclip', '~> 5.0.0'
 gem 'paperclip-i18n'
 gem 'simple_form'
 gem 'devise-i18n'
@@ -27,7 +27,7 @@ gem 'rails_admin', '~> 1.0'
 
 group :development, :test do
   gem 'shoulda'
-  gem "factory_girl_rails", '~> 4.0'
+  gem 'factory_girl_rails', '~> 4.0'
   gem 'byebug', platform: :mri
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.5'
@@ -43,7 +43,7 @@ end
 
 group :test do
   gem 'simplecov', require: false
-  gem "codeclimate-test-reporter", require: nil
+  gem 'codeclimate-test-reporter', require: nil
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw jruby)

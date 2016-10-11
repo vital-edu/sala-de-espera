@@ -40,7 +40,7 @@ preload_app!
 # cannot share connections between processes.
 #
 on_worker_boot do
-   ActiveRecord::Base.establish_connection
+  ActiveRecord::Base.establish_connection
 end
 
 # Allow puma to be restarted by `rails restart` command.

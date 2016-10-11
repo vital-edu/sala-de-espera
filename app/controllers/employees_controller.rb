@@ -1,9 +1,9 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
-  #load_and_authorize_resource
+  before_action :set_employee, only: %i(show edit update destroy)
+  # load_and_authorize_resource
 
   def index
-    @employees = User.joins(:roles).where(roles:{ name: 'employee' })
+    @employees = User.joins(:roles).where(roles: { name: 'employee' })
   end
 
   def show
@@ -19,7 +19,7 @@ class EmployeesController < ApplicationController
   def create
     @employee = User.new(employee_params)
     @employee.add_role :employee
-		@employee.password = Devise.friendly_token.first(32)
+    @employee.password = Devise.friendly_token.first(32)
 
     respond_to do |format|
       if @employee.save(context: :employee)
@@ -41,18 +41,19 @@ class EmployeesController < ApplicationController
   end
 
   def destroy
-    @employee.destroy
+    @employee.destroy!
     respond_to do |format|
       format.html { redirect_to employees_url, notice: 'Funcionário destruído com sucesso.' }
     end
   end
 
   private
-    def set_employee
-      @employee = User.joins(:roles).find_by(id: params[:id], roles: {name: 'employee'})
-    end
 
-    def employee_params
-      params.require(:user).permit(:name, :email, :cpf, :rg)
-    end
+  def set_employee
+    @employee = User.joins(:roles).find_by(id: params[:id], roles: { name: 'employee' })
+  end
+
+  def employee_params
+    params.require(:user).permit(:name, :email, :cpf, :rg)
+  end
 end
