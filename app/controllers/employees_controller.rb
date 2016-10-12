@@ -23,7 +23,10 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.save(context: :employee)
-        format.html { redirect_to employees_url, notice: 'Funcionário criado com sucesso.' }
+        format.html do
+          redirect_to employees_url,
+                      notice: 'Funcionário criado com sucesso.'
+        end
       else
         format.html { render :new }
       end
@@ -33,7 +36,10 @@ class EmployeesController < ApplicationController
   def update
     respond_to do |format|
       if @employee.update(employee_params)
-        format.html { redirect_to employees_url, notice: 'Funcionário atualizado com sucesso.' }
+        format.html do
+          redirect_to employees_url,
+                      notice: 'Funcionário atualizado com sucesso.'
+        end
       else
         format.html { render :edit }
       end
@@ -43,14 +49,21 @@ class EmployeesController < ApplicationController
   def destroy
     @employee.destroy!
     respond_to do |format|
-      format.html { redirect_to employees_url, notice: 'Funcionário destruído com sucesso.' }
+      format.html do
+        redirect_to employees_url,
+                    notice: 'Funcionário destruído com sucesso.'
+      end
     end
   end
 
   private
 
   def set_employee
-    @employee = User.joins(:roles).find_by(id: params[:id], roles: { name: 'employee' })
+    @employee = User.joins(:roles).find_by(
+      id: params[:id], roles: {
+        name: 'employee'
+      }
+    )
   end
 
   def employee_params

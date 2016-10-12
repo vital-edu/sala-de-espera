@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe ServiceCategoriesController, type: :controller do
   before(:each) do
-    allow_any_instance_of(CanCan::ControllerResource).to receive(:load_and_authorize_resource) { nil }
+    allow_any_instance_of(CanCan::ControllerResource).to receive(
+      :load_and_authorize_resource
+    ) { nil }
   end
 
   describe 'GET #index' do
@@ -40,18 +42,24 @@ RSpec.describe ServiceCategoriesController, type: :controller do
     context 'with valid params' do
       it 'creates a new ServiceCategory' do
         expect do
-          post :create, params: { service_category: attributes_for(:service_category) }
+          post :create, params: {
+            service_category: attributes_for(:service_category)
+          }
         end.to change(ServiceCategory, :count).by(1)
       end
 
       it 'assigns a newly created service_category as @service_category' do
-        post :create, params: { service_category: attributes_for(:service_category) }
+        post :create, params: {
+          service_category: attributes_for(:service_category)
+        }
         expect(assigns(:service_category)).to be_a(ServiceCategory)
         expect(assigns(:service_category)).to be_persisted
       end
 
       it 'redirects to the created service_category' do
-        post :create, params: { service_category: attributes_for(:service_category) }
+        post :create, params: {
+          service_category: attributes_for(:service_category)
+        }
         expect(response).to redirect_to(ServiceCategory.last)
       end
     end
@@ -62,13 +70,17 @@ RSpec.describe ServiceCategoriesController, type: :controller do
         @invalid_attributes[:name] = ''
       end
 
-      it 'assigns a newly created but unsaved service_category as @service_category' do
-        post :create, params: { service_category: @invalid_attributes }
+      it 'assigns a newly created but unsaved service_category' do
+        post :create, params: {
+          service_category: @invalid_attributes
+        }
         expect(assigns(:service_category)).to be_a_new(ServiceCategory)
       end
 
       it "re-renders the 'new' template" do
-        post :create, params: { service_category: @invalid_attributes }
+        post :create, params: {
+          service_category: @invalid_attributes
+        }
         expect(response).to render_template('new')
       end
     end
@@ -80,8 +92,15 @@ RSpec.describe ServiceCategoriesController, type: :controller do
         service_category = create(:service_category)
         new_attributes = attributes_for(:service_category)
         new_attributes[:description] = 'Nova descrição do serviço'
-        put :update, params: { id: service_category.id, service_category: new_attributes }
-        expect(ServiceCategory.find(service_category.id).description).to eq(new_attributes[:description])
+        put :update, params: {
+          id: service_category.id,
+          service_category: new_attributes
+        }
+        expect(
+          ServiceCategory.find(
+            service_category.id
+          ).description
+        ).to eq(new_attributes[:description])
       end
 
       it 'assigns the requested service_category as @service_category' do
@@ -111,13 +130,19 @@ RSpec.describe ServiceCategoriesController, type: :controller do
 
       it 'assigns the service_category as @service_category' do
         service_category = create(:service_category)
-        put :update, params: { id: service_category.id, service_category: @invalid_attributes }
+        put :update, params: {
+          id: service_category.id,
+          service_category: @invalid_attributes
+        }
         expect(assigns(:service_category)).to eq(service_category)
       end
 
       it "re-renders the 'edit' template" do
         service_category = create(:service_category)
-        put :update, params: { id: service_category.id, service_category: @invalid_attributes }
+        put :update, params: {
+          id: service_category.id,
+          service_category: @invalid_attributes
+        }
         expect(response).to render_template('edit')
       end
     end

@@ -23,7 +23,9 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, notice: 'Serviço criado com sucesso.' }
+        format.html do
+          redirect_to @service, notice: 'Serviço criado com sucesso.'
+        end
       else
         format.html { render :new }
       end
@@ -33,7 +35,9 @@ class ServicesController < ApplicationController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Serviço atualizado com sucesso.' }
+        format.html do
+          redirect_to @service, notice: 'Serviço atualizado com sucesso.'
+        end
       else
         format.html { render :edit }
       end
@@ -43,7 +47,9 @@ class ServicesController < ApplicationController
   def destroy
     @service.destroy!
     respond_to do |format|
-      format.html { redirect_to services_url, notice: 'Serviço destruído com sucesso.' }
+      format.html do
+        redirect_to services_url, notice: 'Serviço destruído com sucesso.'
+      end
     end
   end
 
@@ -54,6 +60,10 @@ class ServicesController < ApplicationController
   end
 
   def service_params
-    params.require(:service).permit(:scheduled_time, :employee_id, :client_id, :service_category_id)
+    params.require(:service).permit(
+      :scheduled_time, :employee_id,
+      :client_id,
+      :service_category_id
+    )
   end
 end

@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'ServiceCategories', type: :request do
   before(:each) do
-    allow_any_instance_of(CanCan::ControllerResource).to receive(:load_and_authorize_resource) { nil }
+    allow_any_instance_of(CanCan::ControllerResource).to receive(
+      :load_and_authorize_resource
+    ) { nil }
   end
 
   describe 'GET /service_categories' do

@@ -2,13 +2,17 @@ require 'rails_helper'
 
 RSpec.describe ServicesController, type: :controller do
   before(:each) do
-    allow_any_instance_of(CanCan::ControllerResource).to receive(:load_and_authorize_resource) { nil }
+    allow_any_instance_of(
+      CanCan::ControllerResource
+    ).to receive(:load_and_authorize_resource) { nil }
   end
 
   describe 'GET #index' do
     it 'assigns all services as @services' do
       service = create(:service)
-      allow_any_instance_of(ServicesController).to receive(:current_user) { service.employee }
+      allow_any_instance_of(ServicesController).to receive(:current_user) {
+        service.employee
+      }
       get :index
       expect(assigns(:services)).to eq([service])
     end
@@ -40,7 +44,9 @@ RSpec.describe ServicesController, type: :controller do
   describe 'POST #create' do
     before(:each) do
       @service = build(:service)
-      allow_any_instance_of(ServicesController).to receive(:current_user) { @service.employee }
+      allow_any_instance_of(ServicesController).to receive(:current_user) {
+        @service.employee
+      }
     end
 
     context 'with valid params' do
@@ -65,7 +71,7 @@ RSpec.describe ServicesController, type: :controller do
     context 'with invalid params' do
       before(:each) do
         @invalid_attributes = @service.attributes
-        @invalid_attributes['scheduled_time'] = Time.now
+        @invalid_attributes['scheduled_time'] = Time.current
       end
 
       it 'assigns a newly created but unsaved service as @service' do
@@ -84,23 +90,34 @@ RSpec.describe ServicesController, type: :controller do
     context 'with valid params' do
       before(:each) do
         @service = create(:service)
-        allow_any_instance_of(ServicesController).to receive(:current_user) { @service.employee }
+        allow_any_instance_of(ServicesController).to receive(:current_user) {
+          @service.employee
+        }
         @new_attributes = @service.attributes
         @new_attributes['client_id'] = nil
       end
 
       it 'updates the requested service' do
-        put :update, params: { id: @service.to_param, service: @new_attributes }
+        put :update, params: {
+          id: @service.to_param,
+          service: @new_attributes
+        }
         expect(assigns(:service).client_id).to eq(@new_attributes['client_id'])
       end
 
       it 'assigns the requested service as @service' do
-        put :update, params: { id: @service.to_param, service: @new_attributes }
+        put :update, params: {
+          id: @service.to_param,
+          service: @new_attributes
+        }
         expect(assigns(:service)).to eq(@service)
       end
 
       it 'redirects to the service' do
-        put :update, params: { id: @service.to_param, service: @new_attributes }
+        put :update, params: {
+          id: @service.to_param,
+          service: @new_attributes
+        }
         expect(response).to redirect_to(@service)
       end
     end
@@ -108,18 +125,26 @@ RSpec.describe ServicesController, type: :controller do
     context 'with invalid params' do
       before(:each) do
         @service = create(:service)
-        allow_any_instance_of(ServicesController).to receive(:current_user) { @service.employee }
+        allow_any_instance_of(ServicesController).to receive(:current_user) {
+          @service.employee
+        }
         @invalid_attributes = @service.attributes
-        @invalid_attributes['scheduled_time'] = Time.now
+        @invalid_attributes['scheduled_time'] = Time.current
       end
 
       it 'assigns the service as @service' do
-        put :update, params: { id: @service.to_param, service: @invalid_attributes }
+        put :update, params: {
+          id: @service.to_param,
+          service: @invalid_attributes
+        }
         expect(assigns(:service)).to eq(@service)
       end
 
       it "re-renders the 'edit' template" do
-        put :update, params: { id: @service.to_param, service: @invalid_attributes }
+        put :update, params: {
+          id: @service.to_param,
+          service: @invalid_attributes
+        }
         expect(response).to render_template('edit')
       end
     end

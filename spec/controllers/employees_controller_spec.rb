@@ -80,21 +80,32 @@ RSpec.describe EmployeesController, type: :controller do
         employee.add_role :employee
         new_attributes = attributes_for(:employee)
         new_attributes[:name] = 'Oshua'
-        put :update, params: { id: employee.id, user: new_attributes }
-        expect(User.find(employee.id).email).to eq(new_attributes[:email])
+        put :update, params: {
+          id: employee.id,
+          user: new_attributes
+        }
+        expect(
+          User.find(employee.id).email
+        ).to eq(new_attributes[:email])
       end
 
       it 'assigns the requested employee as @employee' do
         employee = create(:employee)
         employee.add_role :employee
-        put :update, params: { id: employee.id, user: attributes_for(:employee) }
+        put :update, params: {
+          id: employee.id,
+          user: attributes_for(:employee)
+        }
         expect(assigns(:employee)).to eq(employee)
       end
 
       it 'redirects to the employee index' do
         employee = create(:employee)
         employee.add_role :employee
-        put :update, params: { id: employee.id, user: attributes_for(:employee) }
+        put :update, params: {
+          id: employee.id,
+          user: attributes_for(:employee)
+        }
         expect(response).to redirect_to(employees_url)
       end
     end
@@ -108,14 +119,20 @@ RSpec.describe EmployeesController, type: :controller do
       it 'assigns the employee as @employee' do
         employee = create(:employee)
         employee.add_role :employee
-        put :update, params: { id: employee.id, user: @invalid_attributes }
+        put :update, params: {
+          id: employee.id,
+          user: @invalid_attributes
+        }
         expect(assigns(:employee)).to eq(employee)
       end
 
       it "re-renders the 'edit' template" do
         employee = create(:employee)
         employee.add_role :employee
-        put :update, params: { id: employee.id, user: @invalid_attributes }
+        put :update, params: {
+          id: employee.id,
+          user: @invalid_attributes
+        }
         expect(response).to render_template('edit')
       end
     end

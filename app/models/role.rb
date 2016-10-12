@@ -11,5 +11,8 @@ class Role < ApplicationRecord
 
   scopify
 
-  validates :name, inclusion: { in: %w(client manager employee), message: '%{value} is not a permitted role' }
+  validates :name, inclusion: {
+    in: %w(client manager employee),
+    message: '%{value} is not a permitted role'
+  }
 end
