@@ -4,6 +4,8 @@ class Service < ApplicationRecord
   belongs_to :employee, class_name: 'User', foreign_key: 'employee_id'
   belongs_to :client, class_name: 'User', foreign_key: 'client_id'
 
+  delegate :name, to: :service_category, prefix: true
+
   enum status: %i(avaiable unavaible bought checked_in done)
 
   validates :scheduled_time, :status, :employee, :service_category, presence: {

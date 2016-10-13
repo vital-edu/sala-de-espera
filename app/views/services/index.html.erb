@@ -17,7 +17,7 @@
     <% @services.each do |service| %>
       <tr>
         <td><%= service.scheduled_time %></td>
-        <td><%= service.service_category.name %></td>
+        <td><%= service.service_category_name %></td>
         <td><%= link_to 'Show', service %></td>
         <td><%= link_to 'Edit', edit_service_path(service) %></td>
         <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
