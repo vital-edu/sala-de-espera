@@ -21,10 +21,7 @@ class ServiceCategoriesController < ApplicationController
 
     respond_to do |format|
       if @service_category.save
-        format.html do
-          redirect_to @service_category,
-                      notice: 'Categoria de serviço criada com sucesso.'
-        end
+        format.html { redirect_to @service_category, notice: 'Categoria de serviço criada com sucesso.' }
       else
         format.html { render :new }
       end
@@ -34,10 +31,7 @@ class ServiceCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @service_category.update(service_category_params)
-        format.html do
-          redirect_to @service_category,
-                      notice: 'Categoria de serviço atualizada com sucesso.'
-        end
+        format.html { redirect_to @service_category, notice: 'Categoria de serviço atualizada com sucesso.' }
       else
         format.html { render :edit }
       end
@@ -47,10 +41,7 @@ class ServiceCategoriesController < ApplicationController
   def destroy
     @service_category.destroy!
     respond_to do |format|
-      format.html do
-        redirect_to service_categories_url, notice
-        'Categoria de serviço destruída com sucesso.'
-      end
+      format.html { redirect_to service_categories_url, notice: 'Categoria de serviço destruída com sucesso.' }
     end
   end
 
@@ -61,11 +52,6 @@ class ServiceCategoriesController < ApplicationController
   end
 
   def service_category_params
-    params.require(:service_category).permit(
-      :name,
-      :description,
-      :price,
-      :image
-    )
+    params.require(:service_category).permit(:name, :description, :price, :image)
   end
 end

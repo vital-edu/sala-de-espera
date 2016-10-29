@@ -4,6 +4,6 @@ FactoryGirl.define do
     employee
     client
     service_category
-    scheduled_time Time.current + 1.day
+    scheduled_time Time.now + 1.day
   end
 end
