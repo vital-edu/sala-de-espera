@@ -5,7 +5,7 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :price %>
-    <%= image_tag service_category.image.url(:medium) %>
+    <%= f.input :image, as: :hidden, input_html: { value: service_category.cached_image_data } %>
     <%= f.input :image, as: :file %>
   </div>
 
